@@ -9,6 +9,8 @@
 #include <list>
 #include <vector>
 
+using namespace Log;
+
 auto genericGraphAlgorithm(const City *start,
                            const City *finish,
                            bool breadthFirst) -> RawCityList {
@@ -29,9 +31,9 @@ auto genericGraphAlgorithm(const City *start,
             current = move(fringe.back());
             fringe.pop_back();
         }
-        log.v() << "one line -- fringe size: " << fringe.size() << ", ";
-        log.v() << " route length " << current.size() << "\n";
-        log.v() << "\t" << current.back()->name << "\n";
+        vout() << "one line -- fringe size: " << fringe.size() << ", ";
+        vout() << " route length " << current.size() << "\n";
+        vout() << "\t" << current.back()->name << "\n";
         if (current.back() == finish) {
             return RawCityList(current);
         }

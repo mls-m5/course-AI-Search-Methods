@@ -7,7 +7,8 @@
 using namespace std;
 
 ostream &operator<<(ostream &stream, const City &city) {
-    stream << city.name << " " << city.x << "," << city.y << "\n";
+    stream << city.name << " " << city.x << "," << city.y
+           << " heuristic=" << city.heuristic << "\n";
     stream << "\t";
     for (auto c : city.connections) {
         stream << c->name << " ";

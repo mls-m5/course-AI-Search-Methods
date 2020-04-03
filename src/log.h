@@ -5,18 +5,12 @@
 
 namespace Log {
 
-struct Log {
-    static std::ostream &i();
-    static std::ostream &e();
-    static std::ostream &v();
-};
-
-extern Log log;
+std::ostream &iout();
+std::ostream &eout();
+std::ostream &vout();
 
 void configureLog(std::ostream &info,
                   std::ostream &error,
                   std::ostream &verbose);
 
 } // namespace Log
-
-using Log::log;

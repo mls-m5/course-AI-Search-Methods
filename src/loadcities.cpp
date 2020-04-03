@@ -3,6 +3,7 @@
 #include "loadcities.h"
 #include "log.h"
 
+#include <cmath>
 #include <iostream>
 #include <sstream>
 
@@ -38,6 +39,16 @@ void loadConnections(istream &stream, CityList &cities) {
     }
 }
 
+void calculateHeuristic(CityList &cities) {
+    auto bucharest = findCity(cities, "Bucharest");
+    for (auto &city : cities) {
+        auto dx = city->x - bucharest->x;
+        auto dy = city->y - bucharest->y;
+        auto len = sqrt(dx * dx + dy * dy);
+        city->heuristic = len;
+    }
+}
+
 auto loadCities(istream &stream) -> CityList {
     string line;
 
@@ -60,6 +71,7 @@ auto loadCities(istream &stream) -> CityList {
     }
 
     loadConnections(stream, cities);
+    calculateHeuristic(cities);
 
     return cities;
 }

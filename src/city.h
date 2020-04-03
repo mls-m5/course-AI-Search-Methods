@@ -12,6 +12,7 @@ struct City {
     std::vector<City *> connections;
     double x;
     double y;
+    double heuristic = 0; // Distance to city named "Bucharest"
 };
 
 typedef std::vector<std::unique_ptr<City>> CityList;

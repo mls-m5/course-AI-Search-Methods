@@ -20,15 +20,15 @@ void configureLog(std::ostream &i, std::ostream &e, std::ostream &v) {
     verbose = &v;
 }
 
-ostream &Log::i() {
+ostream &iout() {
     return *::info;
 }
 
-ostream &Log::e() {
+ostream &eout() {
     return *::error;
 }
 
-ostream &Log::v() {
+ostream &vout() {
     return *::verbose;
 }
 

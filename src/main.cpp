@@ -10,6 +10,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace Log;
 
 namespace {
 
@@ -45,20 +46,26 @@ auto main(int argc, char **argv) -> int {
 
     auto cities = loadCities(file);
 
-    log.v() << cities;
+    vout() << cities;
 
     auto start = findCity(cities, "Arad");
     auto finish = findCity(cities, "Bucharest");
 
     {
-        log.i() << "---- Breadth first -------" << endl;
+        iout() << "---- Breadth first -------" << endl;
         auto route = genericGraphAlgorithm(start, finish);
-        log.i() << route;
+        iout() << route;
     }
 
     {
-        log.i() << "---- Depth first -------" << endl;
+        iout() << "---- Depth first -------" << endl;
         auto route = genericGraphAlgorithm(start, finish);
-        log.i() << route;
+        iout() << route;
+    }
+
+    {
+        iout() << "---- best first -------" << endl;
+        auto route = genericGraphAlgorithm(start, finish);
+        iout() << route;
     }
 }
