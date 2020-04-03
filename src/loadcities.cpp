@@ -1,6 +1,7 @@
 // Copyright © Mattias Larsson Sköld 2020
 
 #include "loadcities.h"
+#include "log.h"
 
 #include <iostream>
 #include <sstream>

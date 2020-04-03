@@ -1,46 +1,42 @@
 // Copyright Mattias Larsson Sköld 2020
 
 #include "city.h"
+#include "genericgraphalgorithm.h"
 #include "loadcities.h"
+#include "log.h"
 
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <queue>
-#include <set>
 
 using namespace std;
 
-//! Implement a _general_ graph search algorith
-auto graphSearchAlgorithm(const City *start, const City *finish)
-    -> RawCityList {
-    vector<const City *> closed;
-    queue<RawCityList> fringe;
-    fringe.emplace(RawCityList{start});
+namespace {
 
-    while (true) {
-        if (fringe.empty()) {
-            return {};
+ofstream nullStream; // Unopened ignores output
+ofstream fileLog("log.txt");
+
+} // namespace
+
+auto parseArguments(vector<string_view> args) {
+    for (auto arg : args) {
+        if (arg == "-v" || arg == "--verbose") {
+            Log::configureLog(cout, cerr, cout);
         }
-        auto current = move(fringe.front());
-        fringe.pop();
-        cout << "one line -- fringe size: " << fringe.size() << endl;
-        cout << "\t" << current.back()->name << endl;
-        if (current.back() == finish) {
-            return RawCityList(current);
-        }
-        else if (std::find(closed.begin(), closed.end(), current.back()) ==
-                 closed.end()) {
-            //            closed.insert(current.back());
-            closed.push_back(current.back());
-            for (auto &connection : current.back()->connections) {
-                fringe.push(expand(current, connection));
-            }
+        else if (arg == "-h" || arg == "--help") {
+            cout
+                << "-h --help            Print this text\n"
+                   "-v --verbose         Print to screen instead of log file\n";
+            exit(0);
         }
     }
 }
 
-auto main(int /*argc*/, char * * /*argv*/) -> int {
+auto main(int argc, char **argv) -> int {
+    cout.tie(&fileLog);
+    Log::configureLog(cout, cerr, fileLog);
+    parseArguments(vector<string_view>(argv + 1, argv + argc));
+
     ifstream file("data/data.txt");
 
     if (!file.is_open()) {
@@ -49,14 +45,20 @@ auto main(int /*argc*/, char * * /*argv*/) -> int {
 
     auto cities = loadCities(file);
 
-    cout << cities;
+    log.v() << cities;
 
-    auto route = graphSearchAlgorithm(findCity(cities, "Arad"),
-                                      findCity(cities, "Bucharest"));
+    auto start = findCity(cities, "Arad");
+    auto finish = findCity(cities, "Bucharest");
 
-    cout << "Route: " << endl;
-    for (auto city : route) {
-        cout << city->name << " " << endl;
+    {
+        log.i() << "---- Breadth first -------" << endl;
+        auto route = genericGraphAlgorithm(start, finish);
+        log.i() << route;
     }
-    cout << endl;
+
+    {
+        log.i() << "---- Depth first -------" << endl;
+        auto route = genericGraphAlgorithm(start, finish);
+        log.i() << route;
+    }
 }

@@ -3,7 +3,11 @@ data/data.txt
 src/LICENCE.txt
 src/city.cpp
 src/city.h
+src/genericgraphalgorithm.cpp
+src/genericgraphalgorithm.h
 src/loadcities.cpp
 src/loadcities.h
+src/log.cpp
+src/log.h
 src/main.cpp
 Matmakefile
