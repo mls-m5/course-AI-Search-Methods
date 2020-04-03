@@ -3,6 +3,7 @@
 #include "city.h"
 
 #include <iostream>
+#include <numeric>
 
 using namespace std;
 
@@ -39,7 +40,7 @@ std::ostream &operator<<(std::ostream &stream, const RawCityList &cities) {
         auto len = dx * dx + dy * dy;
         total += len;
 
-        stream << len << " --> " << total << endl;
+        stream << "distance: " << len << " --> total: " << total << endl;
 
         stream << b->name << endl;
     }
@@ -50,4 +51,16 @@ auto expand(const RawCityList &origin, const City *city) -> RawCityList {
     RawCityList ret = origin;
     ret.push_back(city);
     return ret;
+}
+
+double length(const RawCityList &route) {
+    double length = 0;
+    for (size_t i = 1; i < route.size(); ++i) {
+        auto &a = route[i - 1];
+        auto &b = route[i];
+        auto dx = a->x - b->x;
+        auto dy = a->y - b->y;
+        length += (dx * dx + dy * dy);
+    }
+    return length;
 }

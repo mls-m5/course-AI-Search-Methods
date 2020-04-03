@@ -1,5 +1,6 @@
 // Copyright Mattias Larsson Sköld 2020
 
+#include "aprim.h"
 #include "bestfirst.h"
 #include "city.h"
 #include "genericgraphalgorithm.h"
@@ -67,6 +68,12 @@ auto main(int argc, char **argv) -> int {
     {
         iout() << "---- best first -------" << endl;
         auto route = bestFirst(start, finish);
+        iout() << route;
+    }
+
+    {
+        iout() << "---- aprim search -------" << endl;
+        auto route = aprim(start, finish);
         iout() << route;
     }
 }

@@ -1,11 +1,15 @@
 .gitignore
 data/data.txt
+src/aprim.cpp
+src/aprim.h
 src/bestfirst.cpp
 src/bestfirst.h
 src/city.cpp
 src/city.h
 src/genericgraphalgorithm.cpp
 src/genericgraphalgorithm.h
+src/informedsearch.cpp
+src/informedsearch.h
 src/loadcities.cpp
 src/loadcities.h
 src/log.cpp

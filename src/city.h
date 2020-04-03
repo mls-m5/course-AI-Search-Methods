@@ -25,3 +25,5 @@ std::ostream &operator<<(std::ostream &stream, const CityList &cities);
 std::ostream &operator<<(std::ostream &stream, const RawCityList &cities);
 
 auto expand(const RawCityList &origin, const City *city) -> RawCityList;
+
+auto length(const RawCityList &route) -> double;
