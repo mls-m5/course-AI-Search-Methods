@@ -1,4 +1,9 @@
 .gitignore
 data/data.txt
+src/LICENCE.txt
+src/city.cpp
+src/city.h
+src/loadcities.cpp
+src/loadcities.h
 src/main.cpp
 Matmakefile
