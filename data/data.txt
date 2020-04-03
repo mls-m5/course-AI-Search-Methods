@@ -1,0 +1,28 @@
+Name	x	y
+Arad	50	80
+Bucharest	280	205
+Craiova	170	130
+Dobreta	103	225
+Eforie	404	232
+Fagaras	209	112
+Giurgiu	261	246
+Hirsova	383	186
+Iasi	337	67
+Lugoj	105	168
+Mehadia	105	193
+Neamt	286	45
+Oradea	79	21
+Pitetesti	223	171
+Rimnicu_Villcea	155	141
+Sibiu	138	105
+Timisoara	51	144
+Urziceni	325	183
+Vaslui	365	117
+Zerind	60	50
+
+Routes:
+Oradea Sibiu Fagaras Bucharest Urziceni Vaslui Iasi Neamt
+Oradea Zerind Arad Sibiu Rimnicu_Villcea Pitetesti Bucharest Giurgiu
+Arad Timisoara Lugoj Mehadia Dobreta Craiova Rimnicu_Villcea
+Craiova Pitetesti
+Urziceni Hirsova Eforie
