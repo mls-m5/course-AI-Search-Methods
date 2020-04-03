@@ -15,7 +15,9 @@ struct City {
 };
 
 typedef std::vector<std::unique_ptr<City>> CityList;
+typedef std::vector<const City *> RawCityList;
 
 std::ostream &operator<<(std::ostream &stream, const City &city);
-
 std::ostream &operator<<(std::ostream &stream, const CityList &cities);
+
+auto expand(const RawCityList &origin, const City *city) -> RawCityList;

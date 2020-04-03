@@ -22,3 +22,9 @@ ostream &operator<<(ostream &stream, const CityList &cities) {
     }
     return stream;
 }
+
+auto expand(const RawCityList &origin, const City *city) -> RawCityList {
+    RawCityList ret = origin;
+    ret.push_back(city);
+    return ret;
+}
