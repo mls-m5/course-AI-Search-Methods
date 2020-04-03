@@ -1,5 +1,6 @@
 // Copyright Mattias Larsson Sköld 2020
 
+#include "bestfirst.h"
 #include "city.h"
 #include "genericgraphalgorithm.h"
 #include "loadcities.h"
@@ -59,13 +60,13 @@ auto main(int argc, char **argv) -> int {
 
     {
         iout() << "---- Depth first -------" << endl;
-        auto route = genericGraphAlgorithm(start, finish);
+        auto route = genericGraphAlgorithm(start, finish, false);
         iout() << route;
     }
 
     {
         iout() << "---- best first -------" << endl;
-        auto route = genericGraphAlgorithm(start, finish);
+        auto route = bestFirst(start, finish);
         iout() << route;
     }
 }

@@ -1,5 +1,7 @@
 .gitignore
 data/data.txt
+src/bestfirst.cpp
+src/bestfirst.h
 src/city.cpp
 src/city.h
 src/genericgraphalgorithm.cpp
