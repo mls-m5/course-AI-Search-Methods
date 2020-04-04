@@ -1,4 +1,1 @@
-*.d
-*.o
-main
-log.txt
+build/*

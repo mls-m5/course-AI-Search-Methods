@@ -16,3 +16,5 @@ main.src =
 
 main.copy +=
    data/*.txt
+
+main.dir = build
