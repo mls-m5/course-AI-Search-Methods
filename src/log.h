@@ -6,15 +6,15 @@ namespace Log {
 
 //! Information out:
 //! Should usually be printed
-std::ostream &iout();
+auto iout() -> std::ostream &;
 
 //! Error out:
 //! Printed to cerr or similar
-std::ostream &eout();
+auto eout() -> std::ostream &;
 
 //! Verbose out
 //! Printied if verbosity is enabled
-std::ostream &vout();
+auto vout() -> std::ostream &;
 
 void configureLog(std::ostream &info,
                   std::ostream &error,

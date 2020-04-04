@@ -6,8 +6,6 @@ src/bestfirst.cpp
 src/bestfirst.h
 src/city.cpp
 src/city.h
-src/genericgraphalgorithm.cpp
-src/genericgraphalgorithm.h
 src/informedsearch.cpp
 src/informedsearch.h
 src/loadcities.cpp
@@ -18,3 +16,5 @@ src/main.cpp
 Matmakefile
 README.md
 LICENCE.txt
+src/uninformedsearch.cpp
+src/uninformedsearch.h

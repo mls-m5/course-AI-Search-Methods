@@ -3,9 +3,9 @@
 #include "aprim.h"
 #include "bestfirst.h"
 #include "city.h"
-#include "genericgraphalgorithm.h"
 #include "loadcities.h"
 #include "log.h"
+#include "uninformedsearch.h"
 
 #include <algorithm>
 #include <fstream>
@@ -55,13 +55,13 @@ auto main(int argc, char **argv) -> int {
 
     {
         iout() << "---- Breadth first -------" << endl;
-        auto route = genericGraphAlgorithm(start, finish);
+        auto route = uninformedSearch(start, finish);
         iout() << route;
     }
 
     {
         iout() << "---- Depth first -------" << endl;
-        auto route = genericGraphAlgorithm(start, finish, false);
+        auto route = uninformedSearch(start, finish, false);
         iout() << route;
     }
 

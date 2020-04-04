@@ -1,6 +1,6 @@
 // Copyright © Mattias Larsson Sköld 2020
 
-#include "genericgraphalgorithm.h"
+#include "uninformedsearch.h"
 
 #include "log.h"
 
@@ -11,9 +11,8 @@
 
 using namespace Log;
 
-auto genericGraphAlgorithm(const City *start,
-                           const City *finish,
-                           bool breadthFirst) -> RawCityList {
+auto uninformedSearch(const City *start, const City *finish, bool breadthFirst)
+    -> RawCityList {
     using namespace std;
     vector<const City *> closed;
     list<RawCityList> fringe{{start}};
@@ -22,6 +21,7 @@ auto genericGraphAlgorithm(const City *start,
         if (fringe.empty()) {
             return {};
         }
+
         RawCityList current;
         if (breadthFirst) {
             current = move(fringe.front());
@@ -31,9 +31,11 @@ auto genericGraphAlgorithm(const City *start,
             current = move(fringe.back());
             fringe.pop_back();
         }
+
         vout() << "one line -- fringe size: " << fringe.size() << ", ";
         vout() << " route length " << current.size() << "\n";
         vout() << "\t" << current.back()->name << "\n";
+
         if (current.back() == finish) {
             return RawCityList(current);
         }

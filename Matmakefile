@@ -2,19 +2,14 @@
 # https://github.com/mls-m5/matmake
 
 cppflags +=                 # c++ only flags
-cflags +=                   # c only flags
 
 config += c++17 Wall
 config += debug
 
-main.includes +=
-    include
+main.includes += include
 
-main.src =
-    src/*.cpp
-    # multi line values starts with whitespace
+main.src = src/*.cpp
 
-main.copy +=
-   data/*.txt
+main.copy += data/*.txt
 
 main.dir = build
